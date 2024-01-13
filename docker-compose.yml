@@ -13,6 +13,18 @@ services:
     networks:
       - satelite-network
 
+  satelite-app:
+    build:
+      context: .
+    image: satelite-app:latest
+    container_name: satelite-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - satelite-postgres
+    networks:
+      - satelite-network
+
 networks:
   satelite-network:
     driver: bridge
